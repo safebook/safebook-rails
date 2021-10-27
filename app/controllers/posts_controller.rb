@@ -1,7 +1,8 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
 
   def create
-    post = Post.build(post_params)
+    p params
+    post = Post.new(post_params)
     # verify signature
     if post.save
       render json: {}
@@ -13,5 +14,10 @@ class PostController < ApplicationController
   def get
     posts = Post.where(author: params[:author]).limit(20).all
     render json: posts
+  end
+
+  private
+  def post_params
+    params.permit(:author, :content, :sig)
   end
 end
