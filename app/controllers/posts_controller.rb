@@ -12,7 +12,9 @@ class PostsController < ApplicationController
   end
 
   def get
+    p params[:author]
     posts = Post.where(author: params[:author]).limit(20).all
+    p posts
     render json: posts
   end
 

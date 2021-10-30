@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :message do
+    author { "MyString" }
+    receiver { "MyString" }
+    content { "MyString" }
+  end
+
 
   factory :post do
     author { "JL1QntMH187oMcrdtYC2Q927pN8ytqqpwzpgXBmEHNL5Jqj2j2" }

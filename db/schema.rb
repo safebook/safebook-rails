@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_141753) do
+ActiveRecord::Schema.define(version: 2021_10_30_210436) do
 
   create_table "fields", force: :cascade do |t|
     t.string "author"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2021_10_26_141753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author"], name: "index_fields_on_author"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "author"
+    t.string "receiver"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
