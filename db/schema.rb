@@ -10,33 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_114306) do
+ActiveRecord::Schema.define(version: 2021_10_31_150435) do
 
-  create_table "fields", force: :cascade do |t|
-    t.string "author"
-    t.string "kind"
-    t.string "content"
-    t.string "sig"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author"], name: "index_fields_on_author"
-  end
-
-  create_table "messages", force: :cascade do |t|
+  create_table "private_messages", force: :cascade do |t|
     t.string "author"
     t.string "receiver"
     t.string "hidden_content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author"], name: "index_private_messages_on_author"
+    t.index ["receiver"], name: "index_private_messages_on_receiver"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "signed_messages", force: :cascade do |t|
     t.string "author"
+    t.string "receiver"
     t.string "content"
     t.string "sig"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author"], name: "index_posts_on_author"
+    t.index ["author"], name: "index_signed_messages_on_author"
+    t.index ["receiver"], name: "index_signed_messages_on_receiver"
   end
 
 end

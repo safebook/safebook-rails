@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get  '/:author/posts', to: "posts#get"
-  post '/:author/posts', to: "posts#create"
+  post '/:receiver/inbox', to: "signed_messages#create"
+  get  '/:receiver/inbox', to: "signed_messages#inbox"
+  get  '/:author/outbox',  to: "signed_messages#outbox"
 
-  get  '/:receiver/inbox',  to: "messages#inbox"
-  get  '/:author/outbox',   to: "messages#outbox"
-  post '/:author/inbox',    to: "messages#create"
+  get  '/:author/:receiver', to: "private_messages#get"
+  post '/:author/:receiver', to: "private_messages#create"
 end
