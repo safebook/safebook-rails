@@ -9,9 +9,9 @@ class PrivateMessagesController < ApplicationController
   end
 
   def get
-    messages = PrivateMessage.where(author: params[:author], receiver: params[:receiver])
-      .or(PrivateMessage.where(author: params[:receiver], receiver: params[:author]))
-      .limit(20).all
+    messages = PrivateMessage.where(author: params[:user])
+      .or(PrivateMessage.where(receiver: params[:user]))
+      .all
     render json: messages
   end
 

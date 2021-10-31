@@ -9,11 +9,11 @@ class SignedMessagesController < ApplicationController
   end
 
   def inbox
-    render json: SignedMessage.where(receiver: params[:receiver]).limit(20).all
+    render json: SignedMessage.where(receiver: params[:user]).limit(20).all
   end
 
   def outbox
-    render json: SignedMessage.where(author: params[:author]).limit(20).all
+    render json: SignedMessage.where(author: params[:user]).limit(20).all
   end
 
   private
