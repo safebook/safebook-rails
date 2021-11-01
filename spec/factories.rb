@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :contact do
+    sender { "MyString" }
+    receiver { "MyString" }
+  end
+
   factory :private_message do
     author { "MyString" }
     receiver { "MyString" }

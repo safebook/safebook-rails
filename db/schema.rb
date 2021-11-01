@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_150435) do
+ActiveRecord::Schema.define(version: 2021_11_01_165425) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "author"
+    t.string "receiver"
+    t.string "sig"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"sender\"", name: "index_contacts_on_sender"
+    t.index ["receiver"], name: "index_contacts_on_receiver"
+  end
 
   create_table "private_messages", force: :cascade do |t|
     t.string "author"
