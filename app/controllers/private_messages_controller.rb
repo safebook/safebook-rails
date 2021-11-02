@@ -19,6 +19,13 @@ class PrivateMessagesController < ApplicationController
     render json: messages
   end
 
+  def all
+    messages = PrivateMessage.where(author: params[:user])
+      .or(PrivateMessage.where(receiver: params[:user]))
+      .all
+    render json: messages
+  end
+
   private
   def private_message_params
     params.permit(:author, :receiver, :hidden_content)
